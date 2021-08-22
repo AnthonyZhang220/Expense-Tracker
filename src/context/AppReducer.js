@@ -13,10 +13,10 @@ export default (state, action) => {
 				...state,
 				transactions: [action.payload, ...state.transactions]
 			};
-			case "SELECT_TRANSACTIONTYPE":
+			case "ADD_TRANSACTIONTYPE":
 				return{
-					// ...state,
-					// transactions:,
+					...state,
+					transactions:[...state.transaction, action.payload]
 
 				}
 		default:

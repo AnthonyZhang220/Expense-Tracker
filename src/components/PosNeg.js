@@ -1,29 +1,24 @@
-import React,{ useState } from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
 
-export const PosNeg = () => {
+export const PosNeg =({transaction})=> {
 
-	const [type, setType] = useState('');
+	const { addTransactionType } = useContext(GlobalContext);
 
-	function checkSign(type){
-		console.log(type);
-		return <h4>{type} has been selected.</h4>;
-	}
 
 	return (
-    
-		<div>
-			<label htmlFor="type">Transaction Type</label>
-			<br />
-			<div className="posneg">
-				<button className="btn" type="income" value='income'  onClick={()=> checkSign('income')}>
-					Income
-				</button>
-				<button className="btn" type="expense" value='expense'  onClick={()=> checkSign('expense')}>
-					Expense
-				</button>
-			</div>
-			<div>{checkSign()}</div>
+	<div>
+		<label htmlFor="type">Transaction Type</label>
+		<br />
+		<div className="posneg">
+			<button className="btn" type="income" value='income' onClick={()=>addTransactionType(transaction.type)}>
+				Income
+			</button>
+			<button className="btn" type="expense" value='expense' onClick={()=>addTransactionType(transaction.type)}>
+				Expense
+			</button>
 		</div>
-    
+	</div>
 	);
+
 };

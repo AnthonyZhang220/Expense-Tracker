@@ -18,9 +18,9 @@ export const GlobalProvider = ({ children }) => {
 		});
 	}
 
-	function selectTransactionType(type){
+	function addTransactionType(type){
 		dispatch({
-			type:"SELECT_TRANSACTIONTYPE",
+			type:"ADD_TRANSACTIONTYPE",
 			payload: type,
 		})
 	}
@@ -38,7 +38,7 @@ export const GlobalProvider = ({ children }) => {
 				transactions: state.transactions,
 				deleteTransaction,
 				addTransaction,
-				selectTransactionType,
+				addTransactionType,
 			}}
 		>
 			{children}

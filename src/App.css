@@ -89,7 +89,7 @@ input[type='number'] {
 }
 
 
-button[type='income']{
+option[type='income']{
   cursor: pointer;
   background-color: #2ecc71;
   box-shadow: var(--box-shadow);
@@ -100,7 +100,7 @@ button[type='income']{
   transition: all 0.1s ease-in-out;;
 }
 
-button[type='expense']{
+option[type='expense']{
   cursor: pointer;
   background-color: #c0392b ;
   box-shadow: var(--box-shadow);
@@ -111,16 +111,16 @@ button[type='expense']{
   transition:all 0.1s ease-in-out;
 }
 
-button[type='income']:hover{
+option[type='income']:hover{
   transform: scale(1.05);
 }
-button[type='income']:active{
+option[type='income']:active{
   box-shadow: var(--box-active-shadow)
 }
-button[type='expense']:hover{
+option[type='expense']:hover{
   transform: scale(1.05);
 }
-button[type='expense']:active{
+option[type='expense']:active{
   box-shadow: var(--box-active-shadow)
 }
 

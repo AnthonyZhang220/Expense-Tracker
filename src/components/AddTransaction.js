@@ -1,22 +1,26 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { nanoid } from "nanoid";
-import { PosNeg } from './PosNeg';
+import { PosNeg } from "./PosNeg";
 
 export const AddTransaction = () => {
 	const [text, setText] = useState("");
 	const [amount, setAmount] = useState(0);
-  const [posNeg, setPosNeg] = useState("");
+	const [type, setType] = useState("");
 
 	const { addTransaction } = useContext(GlobalContext);
+	const { addTransactionType } = useContext(GlobalContext);
 
 	const onSubmit = (e) => {
 		e.preventDefault();
+
+		addTransactionType();
 
 		const newTransaction = {
 			id: nanoid(),
 			text,
 			amount: +amount,
+			type,
 		};
 
 		addTransaction(newTransaction);
@@ -25,7 +29,7 @@ export const AddTransaction = () => {
 	return (
 		<>
 			<h3>Add new transaction</h3>
-			<form onSubmit={onSubmit} id="form">
+			<form id="form">
 				<div className="form-control">
 					<label htmlFor="text">Text</label>
 					<input
@@ -46,11 +50,32 @@ export const AddTransaction = () => {
 						placeholder="Enter amount..."
 					/>
 				</div>
-        </form>
-        <div>
-         <PosNeg/>
-        </div>
-				<button className="btn">Add transaction</button>
+				<div>
+					<label htmlFor="type">Transaction Type</label>
+					<br />
+					<select className="posneg">
+						<option
+							className="btn"
+							type="income"
+							value="income"
+							onSelect={(e) => setType(e.target.value)}
+						>
+							Income
+						</option>
+						<option
+							className="btn"
+							type="expense"
+							value="expense"
+							onSelect={(e) => setType(e.target.value)}
+						>
+							Expense
+						</option>
+					</select>
+				</div>
+				<button className="btn" onClick={onSubmit}>
+					Add transaction
+				</button>
+			</form>
 		</>
 	);
 };
